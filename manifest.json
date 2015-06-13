@@ -1,0 +1,24 @@
+{
+	"manifest_version": 2,
+	"name": "二键评教",
+	"version": "0.0.1",
+	"background": { "scripts": ["jquery-1.11.2.js", "background.js"] },
+	"description" : "方便你的评教, 先到 教务管理系统》教学评价 » 选择理论课评教之类的， 进入课程列表， 然后点插件按钮",
+	/*"page_action": {
+		"default_icon": {
+			"19": "19.png",
+			"38": "38.png"
+		},
+		"default_title": "二键评教", // shown in tooltip
+		"default_popup": "popup.html"
+	},*/
+  "browser_action" : {
+    "default_icon" : "icon.png",
+    "default_popup" : "popup.html"
+  },
+	"permissions" : ["tabs","http://localhost/"],
+	"content_scripts":[{
+		"matches":["http://202.119.81.112:9080/*", "http://202.119.81.113:9080/*"],
+		"js":["jquery-2.0.0.min.js", "content_script.js"]
+	}]
+}
