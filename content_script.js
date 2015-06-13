@@ -34,11 +34,19 @@ if (pxs.length == 0) {
     };
     chrome.extension.sendMessage(msg);
 } else {
+    if ($("#tj").length == 0){
+        $('<input type="button" name="tj" id="tj" value="提  交" class="button"><span>&nbsp</span>').insertBefore($("#qx"));
+    }
+    else{
+        $("#tj").attr('type','submit').removeAttr('onclick');
+    }
+
+    $("#tj").attr('type','submit');
     for (var i = 0; i < pxs.length; i++) {
         var tmp = pxs[i];
         var x = document.getElementById('pj0601id_' + $(tmp).attr('value') + '_1');
         $(x).attr('checked', 'checked');
         document.getElementById("issubmit").value = "1";
-        $("#Form1").submit();
+        // $("#Form1").submit();
     }
 }
