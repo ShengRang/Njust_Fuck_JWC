@@ -18,7 +18,7 @@
   },
 	"permissions" : ["tabs","http://localhost/"],
 	"content_scripts":[{
-		"matches":["http://202.119.81.112:9080/*", "http://202.119.81.113:9080/*"],
+		"matches":["http://*/njlgdx/xspj/*"],
 		"js":["jquery-2.0.0.min.js", "content_script.js"]
 	}]
 }

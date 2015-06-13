@@ -1,5 +1,5 @@
 ﻿var pxs = $("input[name='pj06xh']");
-if(pxs.length==0) {
+if (pxs.length == 0) {
     function getRawUrl(href) {
         return href.slice(18, -11);
     }
@@ -8,8 +8,16 @@ if(pxs.length==0) {
 
     var hs = [];
 
-    $.each(tds, function (n, value) {
-        hs.push(getRawUrl($(value).attr('href')));
+    $.each(tds, function(n, value) {
+        var url = $(value).attr('href')
+
+        var re = /javascript:JsMod(.*)/;
+        if (url.match(re)) {
+            var raw_url = getRawUrl(url);
+            hs.push(raw_url);
+            $(value).attr('href', "javascript:window.open('" + raw_url + "');");
+        }
+
     });
     var cs = [];
 
@@ -25,9 +33,8 @@ if(pxs.length==0) {
         error: "失败哈哈哈"
     };
     chrome.extension.sendMessage(msg);
-}
-else{
-    for(var i=0; i<pxs.length; i++){
+} else {
+    for (var i = 0; i < pxs.length; i++) {
         var tmp = pxs[i];
         var x = document.getElementById('pj0601id_' + $(tmp).attr('value') + '_1');
         $(x).attr('checked', 'checked');
