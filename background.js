@@ -22,5 +22,4 @@ articleData.error = "加载中...";
 chrome.extension.onMessage.addListener(function(request, sender, sendRequest){
 	//console.log("Request comes from content script " + sender.tab.url);
 	articleData = request;
-
 });

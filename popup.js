@@ -8,9 +8,16 @@ function getDomainFromUrl(url){
 		host = match[1];
 	return host;
 }
+
+var url = '202.119.81.112:9080';
+
 document.addEventListener('DOMContentLoaded', function () {
 	var data = chrome.extension.getBackgroundPage().articleData;
+	//url = data.tablink;
+	url = getDomainFromUrl(data.url);
+	//alert(url);
 	//alert(data.course);
+	//alert(data.hrefs);
 	//$("#message").text(data.hrefs);
 	//$("#p_c").text(data.course);
 	var obj = data.hrefs.split('@');
@@ -18,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	var div = document.getElementById("div1");
 	var tbody = document.getElementById("tbody");
 	for(var i=0; i<obj.length; i++){
-		$("tbody").append("<tr><td><a target='_blank'" + "href=http://" + getDomainFromUrl(tabs.url) + obj[i] +
+		$("#tbody").append("<tr><td><a target='_blank'" + "href=http://" + url + obj[i] +
         ">" + cs[i] + "</a></td></tr>");
 	}
 

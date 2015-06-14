@@ -22,7 +22,7 @@ if(pxs.length==0) {
         type: "get href",
         hrefs: hs.join('@'),
         course: cs.join('@'),
-        error: "失败哈哈哈"
+        url: document.URL
     };
     chrome.extension.sendMessage(msg);
 }
